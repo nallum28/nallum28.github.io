@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Download Progress Bar Example</title>
+  </head>
+  <body>
+    <h1>Download Progress Bar Example</h1>
+    <div id="progressBar"></div>
+    <script>
+      // Set the duration of the download in seconds
+      const downloadDuration = 10;
+
+      // Get a reference to the progress bar element
+      const progressBar = document.getElementById("progressBar");
+
+      // Set the initial width of the progress bar to 0%
+      progressBar.style.width = "0%";
+
+      // Set an interval to update the progress bar every second
+      const updateInterval = setInterval(() => {
+        // Calculate the current progress of the download
+        const currentProgress = (Date.now() - startTime) / (downloadDuration * 1000);
+
+        // Update the width of the progress bar based on the current progress
+        progressBar.style.width = `${currentProgress * 100}%`;
+
+        // If the download is complete, clear the interval
+        if (currentProgress >= 1) {
+          clearInterval(updateInterval);
+        }
+      }, 1000);
+
+      // Get the start time of the download
+      const startTime = Date.now();
+    </script>
+  </body>
+</html>
